@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeLivro.API", "GerenciadorDeLivro.API\GerenciadorDeLivro.API.csproj", "{D6042E43-2CF1-4F99-934C-C088C8CF84D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeLivro.Application", "GerenciadorDeLivro.Application\GerenciadorDeLivro.Application.csproj", "{07184723-9859-4892-AAC8-2DEBA550C22B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeLivro.Core", "GerenciadorDeLivro.Core\GerenciadorDeLivro.Core.csproj", "{2327B4D9-B943-44B9-8991-9293C11F5622}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeLivro.Infrastructure", "GerenciadorDeLivro.Infrastructure\GerenciadorDeLivro.Infrastructure.csproj", "{8DCA2578-C920-4780-A1AA-56C58E9F9740}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6042E43-2CF1-4F99-934C-C088C8CF84D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6042E43-2CF1-4F99-934C-C088C8CF84D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6042E43-2CF1-4F99-934C-C088C8CF84D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6042E43-2CF1-4F99-934C-C088C8CF84D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07184723-9859-4892-AAC8-2DEBA550C22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07184723-9859-4892-AAC8-2DEBA550C22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07184723-9859-4892-AAC8-2DEBA550C22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07184723-9859-4892-AAC8-2DEBA550C22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2327B4D9-B943-44B9-8991-9293C11F5622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2327B4D9-B943-44B9-8991-9293C11F5622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2327B4D9-B943-44B9-8991-9293C11F5622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2327B4D9-B943-44B9-8991-9293C11F5622}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DCA2578-C920-4780-A1AA-56C58E9F9740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DCA2578-C920-4780-A1AA-56C58E9F9740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DCA2578-C920-4780-A1AA-56C58E9F9740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCA2578-C920-4780-A1AA-56C58E9F9740}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
