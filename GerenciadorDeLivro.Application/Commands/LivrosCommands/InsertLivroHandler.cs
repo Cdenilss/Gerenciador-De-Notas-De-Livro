@@ -17,8 +17,7 @@ public class InsertLivroHandler: IRequestHandler<InsertLivroCommand, ResultViewM
     public async Task<ResultViewModel<Guid>> Handle(InsertLivroCommand request, CancellationToken cancellationToken)
     {
         var livro= request.ToEntity();
-
-      
+        
          await _repository.Add(livro);
          await _repository.CommitAsync();
         return  ResultViewModel<Guid>.Success(livro.Id);

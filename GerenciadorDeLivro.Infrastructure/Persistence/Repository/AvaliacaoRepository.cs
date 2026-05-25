@@ -40,15 +40,7 @@ public class AvaliacaoRepository:IAvaliacaoRepository
         return avaliacao;
         
     }
-    // public async Task<bool> ExistsAvaliacaoByUserId(Guid userId, Guid livroId)
-    // {
-    //     var user =  await _context.Usuarios.Include(u=>u.AvaliacoesUserList)
-    //         .SingleOrDefaultAsync(u=>u.Id == userId);
-    //     
-    //   var avalicao= user.AvaliacoesUserList.Any(a=>a.IdLivro==livroId);
-    //   return avalicao;
-    //   
-    // }
+    
     public async Task<bool> ExistsAvaliacaoByUserId(Guid userId, Guid livroId)
     {
         return await _context.Avaliacoes
