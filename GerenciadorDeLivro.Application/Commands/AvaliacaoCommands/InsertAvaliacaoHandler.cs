@@ -6,11 +6,12 @@ namespace GerenciadorDeLivro.Application.Commands.AvaliacaoCommands;
 
 public class InsertAvaliacaoHandler: IRequestHandler<InsertAvaliacaoCommand,ResultViewModel<Guid>>
 {
-    
+    private readonly IUsuarioRepository _usuarioRepository;
     private readonly ILivroRepository _livroRepository;
-    public InsertAvaliacaoHandler( ILivroRepository livroRepository)
+    public InsertAvaliacaoHandler( ILivroRepository livroRepository, IUsuarioRepository usuarioRepository)
     {
         _livroRepository = livroRepository;
+        _usuarioRepository = usuarioRepository;
     }
 
     public async Task<ResultViewModel<Guid>> Handle(InsertAvaliacaoCommand request, CancellationToken cancellationToken)
@@ -19,6 +20,11 @@ public class InsertAvaliacaoHandler: IRequestHandler<InsertAvaliacaoCommand,Resu
         if (livro is null)
         {
             return ResultViewModel<Guid>.Error("Livro Não Encontrado");
+        }
+        var usuarioExiste = await _usuarioRepository.Exist(request.IdUser);
+        if (!usuarioExiste)
+        {
+            return ResultViewModel<Guid>.Error("Usuario Não Encontrado");
         }
         var avaliacao = request.ToEntity();
         livro.AvaliacoesLivro.Add(avaliacao);
