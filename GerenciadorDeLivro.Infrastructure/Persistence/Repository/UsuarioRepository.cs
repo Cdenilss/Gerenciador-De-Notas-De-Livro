@@ -23,13 +23,13 @@ public class UsuarioRepository :IUsuarioRepository
     public async Task<Usuario?> GetDetailsById(Guid id)
     {
         var usuario = await _context.Usuarios
-            .Include(u=>u.AvaliacoesUserList).ThenInclude(l=>l.Livro)
+            .Where(u => !u.IsDeleted).Include(u=>u.AvaliacoesUserList).ThenInclude(l=>l.Livro)
             .SingleOrDefaultAsync(u=>u.Id == id);
         return usuario;
     }
     public async Task<Usuario?> GetById(Guid id)
     {
-        return await _context.Usuarios.SingleOrDefaultAsync(u=>u.Id == id);
+        return await _context.Usuarios.Where(u => !u.IsDeleted).SingleOrDefaultAsync(u=>u.Id == id);
     }
     public async Task<Guid> Add(Usuario usuario)
     {
@@ -53,7 +53,7 @@ public class UsuarioRepository :IUsuarioRepository
 
     public async Task<bool> EmailExiste(string email)
     {
-        return await  _context.Usuarios.AnyAsync(u => u.Email == email);
+        return await  _context.Usuarios.Where(u => !u.IsDeleted).AnyAsync(u => u.Email == email);
         
     }
 }

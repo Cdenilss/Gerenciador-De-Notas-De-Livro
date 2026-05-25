@@ -19,7 +19,7 @@ public class AvaliacaoRepository:IAvaliacaoRepository
     public async Task<List<Avaliacao>> GetAll()
     {
         var avaliacao= await _context.Avaliacoes
-            .Where(u=>!u.IsDeleted)
+            .Where(a=>!a.IsDeleted)
             .Include(a=>a.Livro).AsNoTracking()
             .ToListAsync();
         return avaliacao;
@@ -28,12 +28,12 @@ public class AvaliacaoRepository:IAvaliacaoRepository
     
     public async Task<Avaliacao?> GetById(Guid id)
     {
-        return await _context.Avaliacoes.SingleOrDefaultAsync(a => a.Id == id);
+        return await _context.Avaliacoes.Where(a => !a.IsDeleted).SingleOrDefaultAsync(a => a.Id == id);
     }
 
     public async Task<Avaliacao?> GetDetailsById(Guid id)
     {
-        var avaliacao = await _context.Avaliacoes
+        var avaliacao = await _context.Avaliacoes.Where(a => !a.IsDeleted)
             .Include(a => a.Livro)
             .Include(a => a.Usuario)
             .SingleOrDefaultAsync(a => a.Id == id);

@@ -24,12 +24,12 @@ public class LivroRepository : ILivroRepository
 
     public async Task<Livro?> GetById(Guid id)
     {
-     return await _context.Livros.SingleOrDefaultAsync(l=>l.Id == id);
+     return await _context.Livros.Where(l => !l.IsDeleted).SingleOrDefaultAsync(l=>l.Id == id);
     }
 
     public async Task<Livro?> GetDetailsById(Guid id)
     {
-       var livro=  await _context.Livros.Include(l=>l.AvaliacoesLivro)
+       var livro=  await _context.Livros.Where(l => !l.IsDeleted).Include(l=>l.AvaliacoesLivro)
             .SingleOrDefaultAsync(l => l.Id == id);
         return livro;
         
@@ -43,7 +43,7 @@ public class LivroRepository : ILivroRepository
 
     public async Task<bool> ExisteIsbnAsync(string isbn, CancellationToken cancellationToken)
     {
-     return await _context.Livros.AnyAsync(l => l.ISBN == isbn, cancellationToken);
+     return await _context.Livros.Where(l => !l.IsDeleted).AnyAsync(l => l.ISBN == isbn, cancellationToken);
      
     }
 
