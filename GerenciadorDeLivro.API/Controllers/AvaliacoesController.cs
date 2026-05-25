@@ -22,9 +22,9 @@ public class AvaliacoesController: ControllerBase
 
         if (!result.IsSuccess)
         {
-            return BadRequest(result.Message);
+            return NotFound(result.Message);
         }
-        return Ok(result.Data);
+        return Ok(result);
     }
 
     [HttpGet("{id}/avaliacoes")]

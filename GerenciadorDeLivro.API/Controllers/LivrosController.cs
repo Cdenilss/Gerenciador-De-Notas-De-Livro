@@ -63,7 +63,7 @@ public class LivrosController : ControllerBase
         {
             return BadRequest(result.Message);
         }
-        return CreatedAtAction(nameof(GetById), new {id= result.Data}, command);
+        return CreatedAtAction(nameof(GetById), new {id= result.Data}, result);
     }
     
     [HttpDelete("/api/livros/{id}")]

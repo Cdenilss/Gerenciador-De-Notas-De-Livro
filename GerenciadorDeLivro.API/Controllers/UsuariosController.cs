@@ -51,7 +51,7 @@ public class UsuariosController : ControllerBase
           return BadRequest(result.Message);
       }
 
-      return CreatedAtAction(nameof(GetById),new { id = result.Data }, command);
+      return CreatedAtAction(nameof(GetById),new { id = result.Data }, result);
     }
     
     [HttpPut]
@@ -60,7 +60,7 @@ public class UsuariosController : ControllerBase
         var result = await _mediator.Send(command);
         if (!result.IsSuccess)
         {
-            NotFound(result.Message);
+            return NotFound(result.Message);
         }
         return NoContent();
     }
