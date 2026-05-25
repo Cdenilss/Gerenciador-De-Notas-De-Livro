@@ -35,7 +35,7 @@ public class UsuariosController : ControllerBase
 
         if (!result.IsSuccess)
         {
-            return BadRequest(result.Message);
+            return NotFound(result.Message);
         }
        return Ok(result);
     }
@@ -53,22 +53,14 @@ public class UsuariosController : ControllerBase
 
       return CreatedAtAction(nameof(GetById),new { id = result.Data }, command);
     }
-
-    [HttpPost("{idUser}/avaliacoes/{idLivro}")]
-
-    public IActionResult PostAvaliacaoLivros(Guid idUser,Guid idLivro, CreateAvaliacaoInputModel model)
-    {
-        
-        return NoContent();
-    }
-
+    
     [HttpPut]
     public async Task<IActionResult> Put(PutUsuarioCommand command)
     {
         var result = await _mediator.Send(command);
         if (!result.IsSuccess)
         {
-            BadRequest(result.Message);
+            NotFound(result.Message);
         }
         return NoContent();
     }
@@ -78,7 +70,7 @@ public class UsuariosController : ControllerBase
     {
         var result = await _mediator.Send(new DeleteUsuarioCommand(id));
         if (!result.IsSuccess)
-            return BadRequest(result.Message);
+            return NotFound(result.Message);
         
         return NoContent();
     }

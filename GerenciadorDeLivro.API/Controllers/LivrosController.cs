@@ -35,7 +35,7 @@ public class LivrosController : ControllerBase
 
         if (!result.IsSuccess)
         {
-            return BadRequest(result.Message);
+            return NotFound(result.Message);
         }
         
         return Ok(result);
@@ -72,7 +72,7 @@ public class LivrosController : ControllerBase
         var result = await _mediator.Send(new DeleteLivroCommand(id));
         if (!result.IsSuccess)
         {
-            return BadRequest(result.Message);
+            return NotFound(result.Message);
         }
         return NoContent();
     }

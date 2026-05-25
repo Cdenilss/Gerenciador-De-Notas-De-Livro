@@ -34,25 +34,11 @@ public class AvaliacoesController: ControllerBase
         var result = await _mediator.Send(new GetAvalicaoByIdQuery(id));
         if (!result.IsSuccess)
         {
-            return BadRequest(result.Message);
+            return NotFound(result.Message);
         }
         
         return Ok(result.Data);
     }
-
     
-    // [HttpDelete("{id}")]
-    //
-    // public IActionResult Delete(Guid id)
-    // {
-    //     var result= .Delete(id);
-    //
-    //     if (!result.IsSuccess)
-    //     {
-    //         return BadRequest(result.Message);
-    //     }
-    //     
-    //     return NoContent();
-    // }
 }
 
