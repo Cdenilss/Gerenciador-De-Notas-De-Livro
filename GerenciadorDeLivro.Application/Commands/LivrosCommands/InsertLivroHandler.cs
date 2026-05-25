@@ -1,6 +1,5 @@
 using GerenciadorDeLivro.Application.Models.Results;
 using GerenciadorDeLivro.Core.Repository;
-using GerenciadorDeLivro.Infrastructure.Persistence.Data;
 using MediatR;
 
 namespace GerenciadorDeLivro.Application.Commands.LivrosCommands;

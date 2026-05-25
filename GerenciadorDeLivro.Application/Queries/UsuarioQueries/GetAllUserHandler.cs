@@ -1,9 +1,7 @@
 using GerenciadorDeLivro.Application.Models.Results;
 using GerenciadorDeLivro.Application.Models.ViewModel.User;
 using GerenciadorDeLivro.Core.Repository;
-using GerenciadorDeLivro.Infrastructure.Persistence.Data;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace GerenciadorDeLivro.Application.Queries.UsuarioQueries;
 

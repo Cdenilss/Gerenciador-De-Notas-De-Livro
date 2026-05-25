@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GerenciadorDeLivro.Core\GerenciadorDeLivro.Core.csproj" />
-      <ProjectReference Include="..\GerenciadorDeLivro.Infrastructure\GerenciadorDeLivro.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>

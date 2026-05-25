@@ -1,8 +1,6 @@
 using GerenciadorDeLivro.Application.Models.Results;
 using GerenciadorDeLivro.Core.Repository;
-using GerenciadorDeLivro.Infrastructure.Persistence.Data;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace GerenciadorDeLivro.Application.Commands.LivrosCommands;
 
