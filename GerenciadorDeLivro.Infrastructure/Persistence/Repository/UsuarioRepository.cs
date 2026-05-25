@@ -8,12 +8,10 @@ namespace GerenciadorDeLivro.Infrastructure.Persistence.Repository;
 public class UsuarioRepository :IUsuarioRepository
 {
     private readonly GerenciadorDbContext _context;
-
     public UsuarioRepository(GerenciadorDbContext context)
     {
         _context = context;
     }
-
     public async Task<List<Usuario>> GetAll()
     {
         var usuarios = await _context.Usuarios.Where(u=>!u.IsDeleted)
@@ -22,7 +20,6 @@ public class UsuarioRepository :IUsuarioRepository
             .ToListAsync();
         return usuarios;
     }
-
     public async Task<Usuario?> GetDetailsById(Guid id)
     {
         var usuario = await _context.Usuarios
@@ -30,12 +27,10 @@ public class UsuarioRepository :IUsuarioRepository
             .SingleOrDefaultAsync(u=>u.Id == id);
         return usuario;
     }
-
     public async Task<Usuario?> GetById(Guid id)
     {
         return await _context.Usuarios.SingleOrDefaultAsync(u=>u.Id == id);
     }
-
     public async Task<Guid> Add(Usuario usuario)
     {
         await _context.Usuarios.AddAsync(usuario);
@@ -43,12 +38,10 @@ public class UsuarioRepository :IUsuarioRepository
         return usuario.Id;
         
     }
-
-    public async Task<Guid> Update(Usuario usuario)
+    public async Task  Update(Usuario usuario)
     {
-       _context.Usuarios.Update(usuario);
+        _context.Usuarios.Update(usuario);
         await _context.SaveChangesAsync();
-        return usuario.Id;
         
     }
 
@@ -56,5 +49,11 @@ public class UsuarioRepository :IUsuarioRepository
     {
        var user= await _context.Usuarios.AnyAsync(u=>u.Id == id);
        return user;
+    }
+
+    public async Task<bool> EmailExiste(string email)
+    {
+        return await  _context.Usuarios.AnyAsync(u => u.Email == email);
+        
     }
 }

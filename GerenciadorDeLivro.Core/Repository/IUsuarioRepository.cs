@@ -9,7 +9,8 @@ public interface IUsuarioRepository
     Task<Usuario?> GetDetailsById(Guid id);
     Task<Usuario?> GetById(Guid id);
     Task<Guid>Add(Usuario usuario);
-    Task<Guid> Update(Usuario usuario);
+    Task Update(Usuario usuario);
     Task<bool> Exist(Guid id);
+    Task<bool> EmailExiste(string email);
     
 }

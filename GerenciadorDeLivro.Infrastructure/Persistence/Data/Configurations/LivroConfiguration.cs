@@ -35,10 +35,7 @@ public class LivroConfiguration : IEntityTypeConfiguration<Livro>
        builder.Property(l=>l.CapaLivro)
            .IsRequired(false);
        
-
-       builder.HasIndex(l => l.Titulo)
-           .IsUnique();
-       
+       builder.HasIndex(l => l.ISBN).IsUnique();
        builder.HasMany(l=> l.AvaliacoesLivro)
            .WithOne(a => a.Livro)
            .HasForeignKey(a => a.IdLivro)

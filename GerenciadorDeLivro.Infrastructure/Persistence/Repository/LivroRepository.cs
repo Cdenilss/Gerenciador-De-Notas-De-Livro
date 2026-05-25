@@ -41,6 +41,12 @@ public class LivroRepository : ILivroRepository
         return exist;
     }
 
+    public async Task<bool> ExisteIsbnAsync(string isbn, CancellationToken cancellationToken)
+    {
+     return await _context.Livros.AnyAsync(l => l.ISBN == isbn, cancellationToken);
+     
+    }
+
     public async Task<Guid> Add(Livro livro)
     {
         await _context.Livros.AddAsync(livro);

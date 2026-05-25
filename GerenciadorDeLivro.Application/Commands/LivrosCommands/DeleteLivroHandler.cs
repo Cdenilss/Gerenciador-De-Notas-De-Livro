@@ -25,9 +25,8 @@ public class DeleteLivroHandler : IRequestHandler<DeleteLivroCommand, ResultView
         }
         livro.SetDeleted();
       await _repository.Update(livro);
-       await _repository.CommitAsync();
-       
-        return ResultViewModel.Success();
+      await _repository.CommitAsync();
+      return ResultViewModel.Success();
 
     }
 }

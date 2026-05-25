@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeLivro.Core", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeLivro.Infrastructure", "GerenciadorDeLivro.Infrastructure\GerenciadorDeLivro.Infrastructure.csproj", "{8DCA2578-C920-4780-A1AA-56C58E9F9740}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeLivro.Test", "GerenciadorDeLivro.Test\GerenciadorDeLivro.Test.csproj", "{92417808-655E-4B26-97E5-110D6F2EC29D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{8DCA2578-C920-4780-A1AA-56C58E9F9740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DCA2578-C920-4780-A1AA-56C58E9F9740}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DCA2578-C920-4780-A1AA-56C58E9F9740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92417808-655E-4B26-97E5-110D6F2EC29D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92417808-655E-4B26-97E5-110D6F2EC29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92417808-655E-4B26-97E5-110D6F2EC29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92417808-655E-4B26-97E5-110D6F2EC29D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

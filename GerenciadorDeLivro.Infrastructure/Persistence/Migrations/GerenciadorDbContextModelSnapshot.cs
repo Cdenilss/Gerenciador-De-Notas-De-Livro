@@ -38,7 +38,6 @@ namespace GerenciadorDeLivro.Infrastructure.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -117,7 +116,7 @@ namespace GerenciadorDeLivro.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Titulo")
+                    b.HasIndex("ISBN")
                         .IsUnique();
 
                     b.ToTable("Livros", (string)null);

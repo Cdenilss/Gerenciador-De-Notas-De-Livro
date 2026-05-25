@@ -32,7 +32,7 @@ public class LivrosViewModel
 
 
         public static LivrosViewModel FromEntity(Livro entity)
-        => new (entity.Id,entity.Titulo,entity.Autor, entity.Descricao, entity.ISBN, 
+        => new (entity.Id,entity.Titulo, entity.Descricao,entity.ISBN,entity.Autor, 
             entity.Editora, entity.Genero, entity.NotaMedia, 
             entity.CapaLivro, entity.AvaliacoesLivro);
         

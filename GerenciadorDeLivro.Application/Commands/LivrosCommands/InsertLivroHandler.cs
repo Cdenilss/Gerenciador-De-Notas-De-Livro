@@ -1,4 +1,5 @@
 using GerenciadorDeLivro.Application.Models.Results;
+using GerenciadorDeLivro.Core.Repository;
 using GerenciadorDeLivro.Infrastructure.Persistence.Data;
 using MediatR;
 
@@ -6,19 +7,20 @@ namespace GerenciadorDeLivro.Application.Commands.LivrosCommands;
 
 public class InsertLivroHandler: IRequestHandler<InsertLivroCommand, ResultViewModel<Guid>>
 {
-    private readonly GerenciadorDbContext _context;
-
-    public InsertLivroHandler(GerenciadorDbContext context)
+    private readonly ILivroRepository _repository;
+    
+    public InsertLivroHandler( ILivroRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
     public async Task<ResultViewModel<Guid>> Handle(InsertLivroCommand request, CancellationToken cancellationToken)
     {
         var livro= request.ToEntity();
-     
-       await _context.Livros.AddAsync(livro);
-        await _context.SaveChangesAsync(cancellationToken);
+
+      
+         await _repository.Add(livro);
+         await _repository.CommitAsync();
         return  ResultViewModel<Guid>.Success(livro.Id);
     }
 }

@@ -40,6 +40,7 @@ public class AvaliacoesController: ControllerBase
         return Ok(result.Data);
     }
 
+    
     // [HttpDelete("{id}")]
     //
     // public IActionResult Delete(Guid id)
