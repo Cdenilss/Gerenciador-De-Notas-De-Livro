@@ -1,10 +1,12 @@
 using FluentValidation;
 using GerenciadorDeLivro.Application.Commands.LivrosCommands;
+using GerenciadorDeLivro.Core.Repository;
 
 namespace GerenciadorDeLivro.Application.Validators.LivroValidators;
 
 public class InsertLivroValidator : AbstractValidator<InsertLivroCommand> 
 {
+
     public InsertLivroValidator()
     {
         RuleFor(livro => livro.Titulo)
@@ -35,7 +37,6 @@ public class InsertLivroValidator : AbstractValidator<InsertLivroCommand>
         RuleFor(livro => livro.Descricao).NotEmpty()
             .WithMessage("Deve ter um breve resumo do livro")
             .MaximumLength(2000).WithMessage("A descrição deve ter no máximo 2000 caracteres");
-        
     }
     
     
