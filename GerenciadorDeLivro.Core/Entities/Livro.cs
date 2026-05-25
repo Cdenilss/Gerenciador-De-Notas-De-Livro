@@ -9,7 +9,7 @@ public class Livro : BaseEntity
         
     }
 
-    public Livro( string titulo, string descricao, string isbn, string autor, string editora, GeneroEnum genero, int anoDePublicacao, int quatidadeDePaginas, decimal? notaMedia, byte? capaLivro) : 
+    public Livro( string titulo, string descricao, string isbn, string autor, string editora, GeneroEnum genero, int anoDePublicacao, int quatidadeDePaginas, byte? capaLivro) : 
         base()
     {
         Titulo = titulo;
@@ -20,7 +20,6 @@ public class Livro : BaseEntity
         Genero = genero;
         AnoDePublicacao = anoDePublicacao;
         QuatidadeDePaginas = quatidadeDePaginas;
-        NotaMedia = notaMedia;
         CapaLivro = capaLivro;
       
         
@@ -35,14 +34,14 @@ public class Livro : BaseEntity
     public GeneroEnum Genero  { get; private set; }
     public int AnoDePublicacao { get; private set; }
     public int QuatidadeDePaginas { get; private set; }
-    public decimal? NotaMedia { get; private set; }
+    public decimal NotaMedia { get; private set; }
     public byte? CapaLivro { get; private set; }
     public List<Avaliacao> AvaliacoesLivro { get; private set; } = [];
     
     public void AtualizarNotaMedia()
     {
         NotaMedia = AvaliacoesLivro.Count == 0
-            ? null
+            ? 0
             : AvaliacoesLivro.Select(a => a.Nota).Average();
     }
 }

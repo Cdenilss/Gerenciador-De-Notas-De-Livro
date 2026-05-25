@@ -19,7 +19,6 @@ public class LivroFaker
             _faker.PickRandom<GeneroEnum>(),
             _faker.Random.Int(0,2025),
             _faker.Random.Int(1,1000),
-            _faker.Random.Decimal(0,0),
             _faker.Random.Byte()
             );
     }
