@@ -9,7 +9,7 @@ public class Livro : BaseEntity
         
     }
 
-    public Livro( string titulo, string descricao, string isbn, string autor, string editora, GeneroEnum genero, int anoDePublicacao, int quatidadeDePaginas, byte? capaLivro) : 
+    public Livro( string titulo, string descricao, string isbn, string autor, string editora, GeneroEnum genero, int anoDePublicacao, int quantidadeDePaginas, byte[]? capaLivro) : 
         base()
     {
         Titulo = titulo;
@@ -19,9 +19,8 @@ public class Livro : BaseEntity
         Editora = editora;
         Genero = genero;
         AnoDePublicacao = anoDePublicacao;
-        QuatidadeDePaginas = quatidadeDePaginas;
+        QuantidadeDePaginas = quantidadeDePaginas;
         CapaLivro = capaLivro;
-      
         
     }
 
@@ -33,9 +32,9 @@ public class Livro : BaseEntity
     public string Editora { get; private set; }
     public GeneroEnum Genero  { get; private set; }
     public int AnoDePublicacao { get; private set; }
-    public int QuatidadeDePaginas { get; private set; }
+    public int QuantidadeDePaginas { get; private set; }
     public decimal NotaMedia { get; private set; }
-    public byte? CapaLivro { get; private set; }
+    public byte[]? CapaLivro { get; private set; }
     public List<Avaliacao> AvaliacoesLivro { get; private set; } = [];
     
     public void AtualizarNotaMedia()

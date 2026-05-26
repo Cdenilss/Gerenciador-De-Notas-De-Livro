@@ -18,7 +18,7 @@ public class InsertLivroFaker
         .RuleFor(l => l.Genero, f => f.PickRandom<GeneroEnum>())
         .RuleFor(l => l.AnoDePublicacao, f => f.Random.Int(0, 2026))
         .RuleFor(l => l.QuantidadeDePaginas, f => f.Random.Int(1, 1000))
-        .RuleFor(l => l.CapaLivro, f => f.Random.Byte());
+        .RuleFor(l => l.CapaLivro, f => f.Random.Bytes(128));
     
     public static InsertLivroCommand CreateFakerCommand() => _insertLivroFaker.Generate();
     

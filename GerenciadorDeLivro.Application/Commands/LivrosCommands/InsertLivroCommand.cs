@@ -15,7 +15,7 @@ public class InsertLivroCommand : IRequest<ResultViewModel<Guid>>
     public GeneroEnum Genero  { get;set; }
     public int AnoDePublicacao { get;set; }
     public int QuantidadeDePaginas { get;set; }
-    public byte? CapaLivro { get; set; }
+    public byte[]? CapaLivro { get; set; }
     
     
     public Livro ToEntity()

@@ -5,7 +5,7 @@ namespace GerenciadorDeLivro.Application.Models.ViewModel;
 
 public class LivrosViewModel
 {
-    public LivrosViewModel(Guid id, string titulo, string descricao, string isbn, string autor, string editora, GeneroEnum genero, decimal? notaMedia, byte? capaLivro, List<Avaliacao>? avaliacaos)
+    public LivrosViewModel(Guid id, string titulo, string descricao, string isbn, string autor, string editora, GeneroEnum genero, decimal? notaMedia, byte[]? capaLivro, List<Avaliacao>? avaliacoes)
     {
         Id = id;
         Titulo = titulo;
@@ -16,7 +16,7 @@ public class LivrosViewModel
         Genero = genero;
         NotaMedia = notaMedia;
         CapaLivro = capaLivro;
-        Avaliacaos = avaliacaos.Count;
+        QuantidadeDeAvaliacoes = avaliacoes.Count;
     }
 
     public Guid Id { get; private set; }
@@ -27,8 +27,8 @@ public class LivrosViewModel
         public string Editora { get; private set; }
         public GeneroEnum Genero  { get; private set; }
         public decimal? NotaMedia { get; private set; }
-        public byte? CapaLivro { get; private set; }
-        public int Avaliacaos { get; private set; }
+        public byte[]? CapaLivro { get; private set; }
+        public int QuantidadeDeAvaliacoes { get; private set; }
 
 
         public static LivrosViewModel FromEntity(Livro entity)

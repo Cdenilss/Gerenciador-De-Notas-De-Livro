@@ -27,10 +27,9 @@ public class LivroConfiguration : IEntityTypeConfiguration<Livro>
            .IsRequired();
        builder.Property(l => l.AnoDePublicacao).
            IsRequired();
-       builder.Property(l => l.QuatidadeDePaginas)
+       builder.Property(l => l.QuantidadeDePaginas)
            .IsRequired();
        builder.Property(l=>l.NotaMedia)
-           .IsRequired(false)
            .HasPrecision(2, 1);
        builder.Property(l=>l.CapaLivro)
            .IsRequired(false);

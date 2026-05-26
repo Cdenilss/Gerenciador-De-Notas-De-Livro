@@ -4,6 +4,7 @@ using GerenciadorDeLivro.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDeLivro.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(GerenciadorDbContext))]
-    partial class GerenciadorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260525212300_RenomeiaQuantidadeDePaginas")]
+    partial class RenomeiaQuantidadeDePaginas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,8 +80,8 @@ namespace GerenciadorDeLivro.Infrastructure.Persistence.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<byte[]>("CapaLivro")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<byte?>("CapaLivro")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
