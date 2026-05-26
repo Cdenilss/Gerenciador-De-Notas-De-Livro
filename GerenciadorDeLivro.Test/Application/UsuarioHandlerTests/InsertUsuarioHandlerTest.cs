@@ -12,7 +12,6 @@ public class InsertUsuarioHandlerTest
     [Fact]
     public async Task InsertUsuario_Insert_Sucesso()
     {
-        //arrage
         
         const string ID = "3f8d2c1a-7b4e-4a9f-9c6d-2e1f8a5b0c3d";
         var id= Guid.Parse(ID);
@@ -33,7 +32,6 @@ public class InsertUsuarioHandlerTest
     [Fact]
     public async Task InsertUsuario_Insert_Excecao()
     {
-        //arrage
         const string ERROR_MESSAGE = "Erro ao inserir usuario";
         var repository = new Mock<IUsuarioRepository>();
         repository

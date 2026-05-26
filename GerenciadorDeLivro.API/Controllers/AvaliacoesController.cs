@@ -31,7 +31,7 @@ public class AvaliacoesController: ControllerBase
 
     public async Task<IActionResult> GetById(Guid id)
     {
-        var result = await _mediator.Send(new GetAvalicaoByIdQuery(id));
+        var result = await _mediator.Send(new GetAvaliacaoByIdQuery(id));
         if (!result.IsSuccess)
         {
             return NotFound(result.Message);

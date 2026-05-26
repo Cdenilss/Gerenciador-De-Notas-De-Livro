@@ -54,7 +54,7 @@ public class LivroRepository : ILivroRepository
         return livro.Id;
     }
 
-    public async Task InsertAvalicao(Avaliacao avaliacao)
+    public async Task InsertAvaliacao(Avaliacao avaliacao)
     {
         await _context.Avaliacoes.AddAsync(avaliacao);
     }

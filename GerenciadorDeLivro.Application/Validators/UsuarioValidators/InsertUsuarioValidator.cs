@@ -19,7 +19,7 @@ public class InsertUsuarioValidator : AbstractValidator<InsertUsuarioCommand>
             .EmailAddress()
             .WithMessage("o Email fornecido não é válido")
             .MaximumLength(50)
-            .WithMessage("o Email precisa ter no máximo 254 caracteres");
+            .WithMessage("o Email precisa ter no máximo 50 caracteres");
         
     }
 }

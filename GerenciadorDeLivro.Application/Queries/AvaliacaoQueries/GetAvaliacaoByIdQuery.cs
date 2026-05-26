@@ -4,9 +4,9 @@ using MediatR;
 
 namespace GerenciadorDeLivro.Application.Queries.AvaliacaoQueries;
 
-public class GetAvalicaoByIdQuery : IRequest<ResultViewModel<AvaliacoesViewModel>>
+public class GetAvaliacaoByIdQuery : IRequest<ResultViewModel<AvaliacoesViewModel>>
 {
-    public GetAvalicaoByIdQuery(Guid id)
+    public GetAvaliacaoByIdQuery(Guid id)
     {
         Id = id;
     }

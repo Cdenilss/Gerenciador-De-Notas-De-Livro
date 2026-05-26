@@ -29,10 +29,10 @@ public class InsertLivroValidator : AbstractValidator<InsertLivroCommand>
         
         RuleFor(livro => livro.Genero)
             .IsInEnum()
-            .WithMessage("O gênero informado é invalido");
+            .WithMessage("O gênero informado é inválido");
         RuleFor(livro => livro.QuantidadeDePaginas)
             .GreaterThan(0).WithMessage("A quantidade de páginas deve ser maior que 0");
-        RuleFor(livro => livro.AnoDePublicacao).GreaterThanOrEqualTo(0).WithMessage("O ano precisa ser Fornecido ")
+        RuleFor(livro => livro.AnoDePublicacao).GreaterThanOrEqualTo(0).WithMessage("O ano precisa ser fornecido")
             .LessThanOrEqualTo(DateTime.Now.Year).WithMessage("O ano de publicação não pode ser maior que o ano atual");
         RuleFor(livro => livro.Descricao).NotEmpty()
             .WithMessage("Deve ter um breve resumo do livro")

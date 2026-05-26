@@ -20,10 +20,9 @@ public class GetByIdHandler : IRequestHandler<GetByIdQuery, ResultViewModel<Livr
         var livro = await _repository.GetDetailsById(request.Id);
         if (livro is null)
         {
-            return ResultViewModel<LivrosViewModel>.Error("Livro nao encontrado");
+            return ResultViewModel<LivrosViewModel>.Error("Livro não encontrado");
         }
         var model= LivrosViewModel.FromEntity(livro);
         return ResultViewModel<LivrosViewModel>.Success(model);
     }
     }
-

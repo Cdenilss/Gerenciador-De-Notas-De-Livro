@@ -55,7 +55,7 @@ public class LivrosController : ControllerBase
      return CreatedAtAction(nameof(GetById), new {id= result.Data}, command);
     }
     [HttpPost("/api/livros/{idLivro}/avaliacoes")] 
-    public async Task<IActionResult> PostAvalicao(Guid idLivro, InsertAvaliacaoCommand command)
+    public async Task<IActionResult> PostAvaliacao(Guid idLivro, InsertAvaliacaoCommand command)
     {
         
         var result = await _mediator.Send(command);

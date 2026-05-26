@@ -24,14 +24,14 @@ public class InsertAvaliacaoHandler: IRequestHandler<InsertAvaliacaoCommand,Resu
         var usuarioExiste = await _usuarioRepository.Exist(request.IdUser);
         if (!usuarioExiste)
         {
-            return ResultViewModel<Guid>.Error("Usuario Não Encontrado");
+            return ResultViewModel<Guid>.Error("Usuário não encontrado");
         }
         var avaliacao = request.ToEntity();
         livro.AvaliacoesLivro.Add(avaliacao);
         livro.AtualizarNotaMedia();
-        await _livroRepository.InsertAvalicao(avaliacao);
+        await _livroRepository.InsertAvaliacao(avaliacao);
         await _livroRepository.Update(livro);
-        await _livroRepository.CommitAsync();
+        await _livroRepository.CommitAsync(cancellationToken);
 
         
         return ResultViewModel<Guid>.Success(avaliacao.Id);

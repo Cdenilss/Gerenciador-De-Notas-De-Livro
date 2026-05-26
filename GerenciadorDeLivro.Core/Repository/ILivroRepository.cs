@@ -10,7 +10,7 @@ public interface ILivroRepository
     Task<bool>Exists(Guid id);
     Task<bool> ExisteIsbnAsync(string isbn, CancellationToken cancellationToken);
     Task<Guid> Add(Livro livro);
-    Task InsertAvalicao(Avaliacao avaliacao);
+    Task InsertAvaliacao(Avaliacao avaliacao);
     Task Update(Livro livro);
     Task CommitAsync(CancellationToken cancellationToken = default);
 

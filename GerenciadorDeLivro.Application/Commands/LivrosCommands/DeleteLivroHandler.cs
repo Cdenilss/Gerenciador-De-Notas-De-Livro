@@ -20,7 +20,7 @@ public class DeleteLivroHandler : IRequestHandler<DeleteLivroCommand, ResultView
         
         if (livro is null)
         {
-           return  ResultViewModel.Error("Livro Nao encontrado");
+           return  ResultViewModel.Error("Livro não encontrado");
         }
         
      livro.SetDeleted();

@@ -21,7 +21,7 @@ public class GetByIdUserHandler : IRequestHandler<GetByIdUserQuery,ResultViewMod
         
         if (usuario == null)
         {
-            return ResultViewModel<UsuarioViewModel>.Error("Usuario não encontrado");
+            return ResultViewModel<UsuarioViewModel>.Error("Usuário não encontrado");
         }
         var model = UsuarioViewModel.FromEntity(usuario);
         
