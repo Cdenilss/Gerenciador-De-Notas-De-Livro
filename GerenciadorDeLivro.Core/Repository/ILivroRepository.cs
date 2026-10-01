@@ -12,7 +12,6 @@ public interface ILivroRepository
     Task<Guid> Add(Livro livro);
     Task InsertAvaliacao(Avaliacao avaliacao);
     Task Update(Livro livro);
-    Task CommitAsync(CancellationToken cancellationToken = default);
 
 
 

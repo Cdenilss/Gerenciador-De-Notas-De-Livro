@@ -6,16 +6,16 @@ namespace GerenciadorDeLivro.Application.Commands.UsuarioCommands;
 
 public class DeleteUsuarioHandler : IRequestHandler<DeleteUsuarioCommand,ResultViewModel>
 {
-    private readonly IUsuarioRepository _usuarioRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public DeleteUsuarioHandler( IUsuarioRepository usuarioRepository)
+    public DeleteUsuarioHandler( IUnitOfWork unitOfWork)
     {
-        _usuarioRepository = usuarioRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<ResultViewModel> Handle(DeleteUsuarioCommand request, CancellationToken cancellationToken)
     {
-        var usuario = await _usuarioRepository.GetById(request.Id);
+        var usuario = await _unitOfWork.Usuario.GetById(request.Id);
 
         if (usuario is null)
         {
@@ -23,9 +23,8 @@ public class DeleteUsuarioHandler : IRequestHandler<DeleteUsuarioCommand,ResultV
         }
         
         usuario.SetDeleted();
-        await _usuarioRepository.Update(usuario);
-
-        
+        await _unitOfWork.Usuario.Update(usuario);
+        await _unitOfWork.CompleteAsync();
         return  ResultViewModel.Success();
     }
 }

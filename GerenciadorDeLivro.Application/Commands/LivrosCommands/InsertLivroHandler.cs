@@ -6,19 +6,18 @@ namespace GerenciadorDeLivro.Application.Commands.LivrosCommands;
 
 public class InsertLivroHandler: IRequestHandler<InsertLivroCommand, ResultViewModel<Guid>>
 {
-    private readonly ILivroRepository _repository;
-    
-    public InsertLivroHandler( ILivroRepository repository)
+    private readonly IUnitOfWork _unitOfWork;
+    public InsertLivroHandler( IUnitOfWork unitOfWork)
     {
-        _repository = repository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<ResultViewModel<Guid>> Handle(InsertLivroCommand request, CancellationToken cancellationToken)
     {
         var livro= request.ToEntity();
         
-         await _repository.Add(livro);
-         await _repository.CommitAsync();
+         await _unitOfWork.Livro.Add(livro);
+         await _unitOfWork.CompleteAsync();
         return  ResultViewModel<Guid>.Success(livro.Id);
     }
 }

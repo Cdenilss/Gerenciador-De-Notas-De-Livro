@@ -1,4 +1,5 @@
 using GerenciadorDeLivro.Core.Repository;
+using GerenciadorDeLivro.Infrastructure.Persistence;
 using GerenciadorDeLivro.Infrastructure.Persistence.Data;
 using GerenciadorDeLivro.Infrastructure.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ public static class InfrasModule
     public static IServiceCollection AddInfrasModule(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddRepository();
+        services.AddUnitOfWork();
         services.AddData(configuration);
         return services;
         
@@ -32,4 +34,9 @@ public static class InfrasModule
         return services;
     }
 
+    public static IServiceCollection AddUnitOfWork(this IServiceCollection services)
+    {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        return services;
+    }
 }

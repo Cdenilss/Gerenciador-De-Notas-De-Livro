@@ -6,24 +6,24 @@ namespace GerenciadorDeLivro.Application.Commands.UsuarioCommands;
 
 public class PutUsuarioHandler : IRequestHandler<PutUsuarioCommand, ResultViewModel>
 {
-  
-    private readonly IUsuarioRepository _usuarioRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public PutUsuarioHandler( IUsuarioRepository usuarioRepository)
+    public PutUsuarioHandler(IUnitOfWork unitOfWork)
     {
-        
-        _usuarioRepository = usuarioRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<ResultViewModel> Handle(PutUsuarioCommand request, CancellationToken cancellationToken)
     {
-        var usuario = await _usuarioRepository.GetById(request.UserId);
+        var usuario = await _unitOfWork.Usuario.GetById(request.UserId);
         if (usuario is null)
         {
             return ResultViewModel.Error("Usuario não encontrado");
         }
+
         usuario.Update(request.Nome, request.Email);
-        await _usuarioRepository.Update(usuario);
+        await _unitOfWork.Usuario.Update(usuario);
+        await _unitOfWork.CompleteAsync(cancellationToken);
         return ResultViewModel.Success();
     }
 }

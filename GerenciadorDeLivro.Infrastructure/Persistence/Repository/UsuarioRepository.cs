@@ -34,14 +34,12 @@ public class UsuarioRepository :IUsuarioRepository
     public async Task<Guid> Add(Usuario usuario)
     {
         await _context.Usuarios.AddAsync(usuario);
-        await _context.SaveChangesAsync();
         return usuario.Id;
         
     }
     public async Task  Update(Usuario usuario)
     {
         _context.Usuarios.Update(usuario);
-        await _context.SaveChangesAsync();
         
     }
 

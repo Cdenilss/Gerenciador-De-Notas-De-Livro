@@ -6,17 +6,16 @@ namespace GerenciadorDeLivro.Application.Commands.LivrosCommands;
 
 public class DeleteLivroHandler : IRequestHandler<DeleteLivroCommand, ResultViewModel>
 {
-   private readonly ILivroRepository _repository;
+   private readonly IUnitOfWork _unitOfWork;
 
-    public DeleteLivroHandler(ILivroRepository repository)
+    public DeleteLivroHandler( IUnitOfWork unitOfWork)
     {
-        _repository = repository;
-        
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<ResultViewModel> Handle(DeleteLivroCommand request, CancellationToken cancellationToken)
     {
-        var livro = await _repository.GetById(request.Id);
+        var livro = await _unitOfWork.Livro.GetById(request.Id);
         
         if (livro is null)
         {
@@ -24,8 +23,8 @@ public class DeleteLivroHandler : IRequestHandler<DeleteLivroCommand, ResultView
         }
         
      livro.SetDeleted();
-      await _repository.Update(livro);
-      await _repository.CommitAsync();
+      await _unitOfWork.Livro.Update(livro);
+      await _unitOfWork.CompleteAsync();
       return ResultViewModel.Success();
 
     }

@@ -19,7 +19,7 @@ public class LivroRepository : ILivroRepository
         var livros = await _context.Livros.Where(l=>!l.IsDeleted)
             .ToListAsync();
         return livros;
-        
+
     }
 
     public async Task<Livro?> GetById(Guid id)
@@ -32,7 +32,7 @@ public class LivroRepository : ILivroRepository
        var livro=  await _context.Livros.Where(l => !l.IsDeleted).Include(l=>l.AvaliacoesLivro)
             .SingleOrDefaultAsync(l => l.Id == id);
         return livro;
-        
+
     }
 
     public Task<bool> Exists(Guid id)
@@ -44,13 +44,13 @@ public class LivroRepository : ILivroRepository
     public async Task<bool> ExisteIsbnAsync(string isbn, CancellationToken cancellationToken)
     {
      return await _context.Livros.Where(l => !l.IsDeleted).AnyAsync(l => l.ISBN == isbn, cancellationToken);
-     
+
     }
 
     public async Task<Guid> Add(Livro livro)
     {
         await _context.Livros.AddAsync(livro);
-        
+
         return livro.Id;
     }
 
@@ -58,13 +58,10 @@ public class LivroRepository : ILivroRepository
     {
         await _context.Avaliacoes.AddAsync(avaliacao);
     }
+
     public async Task Update(Livro livro)
     {
        _context.Livros.Update(livro);
     }
 
-    public async Task CommitAsync(CancellationToken cancellationToken = default)
-    {
-       await _context.SaveChangesAsync(cancellationToken);
-    }
 }
