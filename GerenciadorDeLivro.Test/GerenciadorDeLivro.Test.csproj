@@ -23,6 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\GerenciadorDeLivro.API\GerenciadorDeLivro.API.csproj" />
       <ProjectReference Include="..\GerenciadorDeLivro.Application\GerenciadorDeLivro.Application.csproj" />
       <ProjectReference Include="..\GerenciadorDeLivro.Core\GerenciadorDeLivro.Core.csproj" />
     </ItemGroup>

@@ -1,4 +1,5 @@
 using GerenciadorDeLivro.Application;
+using GerenciadorDeLivro.API.Middlewares;
 using GerenciadorDeLivro.Infrastructure;
 using Scalar.AspNetCore;
 
@@ -9,6 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddApplication();
 builder.Services.AddInfrasModule(builder.Configuration);
 var app = builder.Build();
+
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
