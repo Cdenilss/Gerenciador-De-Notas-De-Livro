@@ -8,8 +8,10 @@ public class InsertUsuarioCommand : IRequest<ResultViewModel<Guid>>
 {
     public string Nome { get; set; }
     public string Email { get; set; }
+    
+    public string Senha { get; set; }
 
-    public Usuario ToEntity()
-        => new(Nome, Email);
+    public Usuario ToEntity(string senhaHash)
+        => new(Nome, Email, senhaHash );
     
 }

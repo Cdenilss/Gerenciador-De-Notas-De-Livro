@@ -13,7 +13,7 @@ public class DeleteUsuarioHandlerTest
         const string ID = "3f8d2c1a-7b4e-4a9f-9c6d-2e1f8a5b0c3d";
         var id= Guid.Parse(ID);
 
-        var usuario = new Usuario("Carlos Teste", "Email@teste.com");
+        var usuario = new Usuario("Carlos Teste", "Email@teste.com", "assasadsada");
         var repository = Mock.Of<IUnitOfWork>
         (r => r.Usuario.GetById(It.IsAny<Guid>()) == Task.FromResult(usuario)
               && r.Usuario.Update(It.IsAny<Usuario>()) == Task.CompletedTask);
@@ -31,7 +31,7 @@ public class DeleteUsuarioHandlerTest
         const string ID = "3f8d2c1a-7b4e-4a9f-9c6d-2e1f8a5b0c3d";
         var id= Guid.Parse(ID);
 
-        var usuario = new Usuario("Carlos Teste", "Email@teste.com");
+        var usuario = new Usuario("Carlos Teste", "Email@teste.com", "assasadsada");
         var repository = Mock.Of<IUnitOfWork>
         (r => r.Usuario.GetById(It.IsAny<Guid>()) == Task.FromResult((Usuario?) null)
               && r.Usuario.Update(It.IsAny<Usuario>()) == Task.CompletedTask);

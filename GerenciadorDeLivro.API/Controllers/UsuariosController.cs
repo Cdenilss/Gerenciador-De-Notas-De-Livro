@@ -1,17 +1,18 @@
 using GerenciadorDeLivro.Application.Commands.UsuarioCommands;
-using GerenciadorDeLivro.Application.Models.InputModel;
 using GerenciadorDeLivro.Application.Queries.UsuarioQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace GerenciadorDeLivro.API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class UsuariosController : ControllerBase
 {
-
-
+    
     private readonly IMediator _mediator;
     
     public UsuariosController( IMediator mediator)
@@ -19,7 +20,7 @@ public class UsuariosController : ControllerBase
         
         _mediator = mediator;
     }
-    
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task <IActionResult> GetAll()
     {
@@ -27,7 +28,7 @@ public class UsuariosController : ControllerBase
         
        return Ok(result);
     }
-
+    [Authorize(Roles = "Admin")]
     [HttpGet("{id}")]
     public async Task <IActionResult> GetById(Guid id)
     {
@@ -40,7 +41,7 @@ public class UsuariosController : ControllerBase
        return Ok(result);
     }
     
-
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Post(InsertUsuarioCommand command)
     {
@@ -65,6 +66,7 @@ public class UsuariosController : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {
@@ -72,6 +74,29 @@ public class UsuariosController : ControllerBase
         if (!result.IsSuccess)
             return NotFound(result.Message);
         
+        return NoContent();
+    }
+
+    [AllowAnonymous]
+    [HttpPost("password-recovery/request")]
+    [EnableRateLimiting("password-recovery-request")]
+
+    public async Task<IActionResult> RequestRecoveryPassword(PasswordRecoveryCommand command)
+    { 
+        await _mediator.Send( command);
+        return NoContent();
+    }
+
+    [AllowAnonymous]
+    [HttpPost("password-recovery/changes")]
+    [EnableRateLimiting("password-recovery-change")]
+    public async Task<IActionResult> ChangePassword(ChangePassowordCommand command)
+    {
+       var result= await _mediator.Send(command);
+        if (!result.IsSuccess)
+        {
+            return BadRequest(result.Message);
+        }
         return NoContent();
     }
     

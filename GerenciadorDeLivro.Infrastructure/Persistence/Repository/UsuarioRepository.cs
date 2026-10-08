@@ -31,6 +31,13 @@ public class UsuarioRepository :IUsuarioRepository
     {
         return await _context.Usuarios.Where(u => !u.IsDeleted).SingleOrDefaultAsync(u=>u.Id == id);
     }
+
+    public async Task<Usuario?> GetByEmail(string email)
+    {
+        return await _context.Usuarios
+            .SingleOrDefaultAsync(u => !u.IsDeleted && u.Email == email);
+    }
+
     public async Task<Guid> Add(Usuario usuario)
     {
         await _context.Usuarios.AddAsync(usuario);

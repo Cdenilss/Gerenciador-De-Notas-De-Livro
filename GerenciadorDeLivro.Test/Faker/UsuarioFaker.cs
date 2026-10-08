@@ -12,7 +12,7 @@ public class UsuarioFaker
     {
         return new Usuario(
             _faker.Person.FirstName,
-            _faker.Person.Email
+            _faker.Person.Email,_faker.Random.String(10)
         );
     }
 }

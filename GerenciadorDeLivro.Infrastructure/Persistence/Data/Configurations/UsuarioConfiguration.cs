@@ -23,6 +23,13 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         builder.HasIndex(u => u.Email)
             .IsUnique();
 
+        builder.Property(u => u.Senha)
+            .IsRequired();
+        builder.Property(u => u.Role)
+            .IsRequired()
+            .HasMaxLength(50)
+            .HasDefaultValue("User");
+        
         builder.HasMany(u => u.AvaliacoesUserList)
             .WithOne(a => a.Usuario)
             .HasForeignKey(a => a.IdUser)
